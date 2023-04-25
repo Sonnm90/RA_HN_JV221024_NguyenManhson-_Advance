@@ -192,11 +192,12 @@ DELIMITER //
 CREATE PROCEDURE getOrderById
 (IN cusNum varchar(4))
 BEGIN
-  SELECT * FROM orders 
-  join customers on customers.customer_id = orders.customer_id
+  SELECT o.customer_id as 'Mã KH',name as'Tên KH', order_id as 'Mã HĐ', order_date as 'Ngày tạo HĐ' FROM orders  o
+  join customers on customers.customer_id = o.customer_id
   WHERE customers.customer_id = cusNum;
 END //
 DELIMITER ;
+drop procedure getOrderById;
 call getOrderById('C001');
 
 -- Tạo PROCEDURE tạo mới một đơn hàng với các tham số là mã khách hàng, tổng

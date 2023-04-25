@@ -238,7 +238,7 @@ select p.name as 'Tên SP', sum(quantity) as 'Số lượng bán ra ',month as '
 join orders_details os on p.product_id = os.product_id
 where  os.order_id in (select order_id from orders where month(order_date)=month and year(order_date)=year)
 group by p.name
-order by sum(quantity) asc;
+order by sum(quantity) desc;
 END //
 DELIMITER ;
 drop procedure showProductSellByMonth;
